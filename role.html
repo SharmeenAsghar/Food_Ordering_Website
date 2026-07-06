@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastFest - Select Role</title>
+    <!-- Link to your updated Cyber Emerald style.css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google font support to match typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="role-container">
+
+    <!-- The Glassmorphic Content Card Wrapper -->
+    <div class="role-card">
+        <h1>🍔 FastFest</h1>
+        <p>Select how you want to continue</p>
+
+        <!-- ADMIN SECTION -->
+        <button class="btn admin-btn" onclick="showAdminLogin()">
+            Admin Login
+        </button>
+
+        <div id="adminLoginBox" style="display:none; margin-top:15px;" class="container-form-wrapper">
+            <input
+                type="text"
+                id="adminUsername"
+                placeholder="Admin Username">
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Admin Password">
+
+            <button
+                class="btn solid"
+                onclick="adminLogin()"
+                style="width: 100%; margin-top: 5px;">
+                Confirm Login
+            </button>
+        </div>
+
+        <!-- Premium Themed Divider -->
+        <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 30px 0; width: 100%;"></div>
+
+        <!-- USER SECTION -->
+        <button
+            class="btn user-btn"
+            onclick="continueAsUser()">
+            Continue as User
+        </button>
+    </div>
+
+</div>
+
+<script>
+function showAdminLogin(){
+    document.getElementById(
+        "adminLoginBox"
+    ).style.display = "block";
+}
+
+async function adminLogin(){
+    const username = document.getElementById("adminUsername").value;
+    const password = document.getElementById("adminPassword").value;
+
+    if(username === "" || password === ""){
+        alert("Please enter username and password");
+        return;
+    }
+
+    try {
+        const res = await fetch("http://localhost:5000/admin-login", {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if(data.success){
+            localStorage.setItem("role", "admin");
+            alert("Admin Login Successful");
+            window.location.href = "menu.html";
+        } else {
+            alert("Invalid Username or Password");
+        }
+    } catch(err) {
+        console.log(err);
+        alert("Server Error");
+    }
+}
+
+function continueAsUser(){
+    localStorage.setItem("role", "user");
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

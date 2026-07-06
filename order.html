@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">QuickBite</div>
+</header>
+
+<div class="container">
+
+    <h2>🧾 Order Summary</h2>
+
+    <div id="billContainer"></div>
+
+    <h3 id="totalAmount"></h3>
+
+    <hr>
+
+    <h2>📍 Delivery Details</h2>
+
+    <form id="orderForm">
+
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" placeholder="Last Name" required>
+        <input type="text" id="address" placeholder="Delivery Address" required>
+
+        <button type="submit">Place Order</button>
+
+    </form>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+    loadBill();
+</script>
+
+</body>
+</html>

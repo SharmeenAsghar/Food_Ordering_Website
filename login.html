@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">🍕</div>
+
+        <div id="userLoginBox">
+            <h2>Welcome Back</h2>
+            <form onsubmit="login(); return false;">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Signup</a></p>
+            
+            <button class="switch-btn" onclick="toggleView('admin')">Admin Login</button>
+        </div>
+
+        <div id="adminLoginBox" style="display: none;">
+            <h2>Admin Login</h2>
+            <form onsubmit="adminLogin(); return false;">
+                <input type="text" id="adminUsername" placeholder="Username" required>
+                <input type="password" id="adminPassword" placeholder="Password" required>
+                <button type="submit">Admin Login</button>
+            </form>
+            
+            <button class="switch-btn" onclick="toggleView('user')">Back to User Login</button>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

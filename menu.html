@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastFest - Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo"> FastFest</div>
+
+     <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="restaurant.html">Restaurants</a>
+        <a href="menu.html">Food Items</a>
+        <a href="cart.html">Cart 🛒</a>
+
+    </nav>
+
+    <div class="auth-buttons">
+        <a href="login.html" class="btn outline">Login</a>
+        <a href="signup.html" class="btn solid">Signup</a>
+        <button
+id="logoutBtn"
+class="btn outline"
+onclick="logout()">
+
+Logout
+
+</button>
+        
+    </div>
+</header>
+
+<section class="page-header">
+    <h1> FastFest Food Gallery</h1>
+    <p>From our top restaurants</p>
+</section>
+<div class="add-item-form">
+  <h2>Add New Food Item</h2>
+
+  <input type="text" id="newItemName" placeholder="Item Name">
+  <input type="number" id="newItemPrice" placeholder="Price">
+  <input type="text" id="newItemCategory" placeholder="Category">
+  <input type="text" id="newItemRestaurant" placeholder="Restaurant Name">
+  <input type="text" id="newItemImage" placeholder="Image URL or file name">
+
+  <button onclick="addMenuItem()">Add Item</button>
+</div>
+<div class="gallery">
+    <script>
+window.onload = function(){
+
+    const role =
+    localStorage.getItem("role");
+
+    const form =
+    document.querySelector(".add-item-form");
+
+    if(role !== "admin"){
+
+        form.style.display = "none";
+
+        document
+        .querySelectorAll(".delete-btn")
+        .forEach(btn=>{
+            btn.style.display = "none";
+        });
+    }
+}
+</script>
+    <!-- 1 -->
+    <div class="food-card">
+        <img src="pic8.jpg">
+        <h3>Chicken Biryani</h3>
+        <p>Desi Delight</p>
+        <p>Price : 350</p>
+       <button onclick="addToCart('Chicken Biryani',350)">Add to Cart</button>
+       <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+
+    </div>
+
+    <!-- 2 -->
+    <div class="food-card">
+        <img src="new1.jpg">
+        <h3>Chicken Karahi</h3>
+        <p>Spice Hub</p>
+        <p>Price : 900</p>
+        <button onclick="addToCart('Chicken Karahi',900)"">Add to Cart</button>
+        <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>    
+    </div>
+
+    <!-- 3 -->
+    <div class="food-card">
+        <img src="pic1.jpg">
+        <h3>Zinger Burger</h3>
+        <p>Burger Point</p>
+        <p>Price: 300</p>
+        <button onclick="addToCart('Zinger Burger',300)">Add to Cart</button>
+         <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>    
+    </div>
+
+    <!-- 4 -->
+    <div class="food-card">
+        <img src="new2.jpg">
+        <h3>Pizza Slice</h3>
+        <p>Pizza Palace</p>
+        <p>Price : 250</p>
+        <button onclick="addToCart('Pizza Slice',250)">Add to Cart</button>
+<button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+    </div>
+    <!-- 5 -->
+    <div class="food-card">
+        <img src="new3.jpg">
+        <h3>Fries</h3>
+        <p>Crunchy Bites</p>
+        <p>Price : 150</p>
+    
+      <button onclick="addToCart('Fries',200)">Add to Cart</button>
+       <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="food-card">
+        <img src="new5.jpg">
+        <h3>Chocolate Cake</h3>
+        <p>Sweet Heaven</p>
+        <p>Price : 550</p>
+        <button onclick="addToCart('Choclate Cake',550)">Add to Cart</button>
+         <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>  
+    </div>
+
+    <!-- 7 -->
+    <div class="food-card">
+        <img src="new4.jpg">
+        <h3>Brownie</h3>
+        <p>Dessert Corner</p>
+        <p>Price : 200</p>
+     <button onclick="addToCart('Brownie',200)">Add to Cart</button>
+     <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="food-card">
+        <img src="new6.jpg">
+        <h3>Mango Juice</h3>
+        <p>Fresh Juice Bar</p>
+        <p>Price : 250</p>
+        <button onclick="addToCart('Mango Juice',250)">Add to Cart</button>
+        <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+    </div>
+
+    <!-- 9 -->
+    <div class="food-card">
+        <img src="new7.jpg">
+        <h3>Cold Coffee</h3>
+        <p>Cool Sips</p>
+        <p>Price : 400</p>
+       <button onclick="addToCart('Cold Coffee',400)">Add to Cart</button>
+        <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+    </div>
+
+    <!-- 10 -->
+    <div class="food-card">
+        <img src="new8.jpg">
+        <h3>Fried Rice</h3>
+        <p>Asian Bowl</p>
+        <p>Price : 350</p>
+      <button onclick="addToCart('Fried Rice',350)">Add to Cart</button>
+    <button class="delete-btn"
+onclick="deleteItem(this)">
+Delete
+</button>
+    </div>
+
+</div>
+<script src="script.js"></script>
+<script src="app.js"></script>
+</body>
+</html>>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastFest - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+const role = localStorage.getItem("role");
+
+if (!role) {
+    window.location.href = "role.html";
+}
+</script>
+
+<header class="navbar">
+
+    <div class="logo">FastFest</div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="restaurant.html">Restaurants</a>
+        <a href="menu.html">Food Items</a>
+        <a href="cart.html">Cart 🛒</a>
+
+        <a
+            href="admin.html"
+            id="adminLink"
+            style="display:none;">
+            Admin Dashboard
+        </a>
+    </nav>
+
+    <div class="auth-buttons">
+
+        <a href="login.html" class="btn outline">
+            Login
+        </a>
+
+        <a href="signup.html" class="btn solid">
+            Signup
+        </a>
+
+        <button
+            id="logoutBtn"
+            class="btn outline"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Delicious Food,
+            Delivered Fast
+        </h1>
+
+        <p>
+            Welcome to FastFest — your one-stop platform
+            for ordering tasty meals from the best local
+            restaurants. Browse menus, explore cuisines,
+            and enjoy hot food delivered straight to your door.
+        </p>
+
+        <a href="restaurant.html" class="btn solid">
+            Explore Restaurants
+        </a>
+
+    </div>
+
+    <img src="new9.jpg" alt="Food Image">
+
+</section>
+
+<section class="page-header">
+    <h1>🍽️ Explore Restaurants</h1>
+    <p>Choose your favorite place to eat</p>
+</section>
+
+<script>
+
+if(localStorage.getItem("role") === "admin"){
+
+    const adminLink =
+    document.getElementById("adminLink");
+
+    if(adminLink){
+        adminLink.style.display =
+        "inline-block";
+    }
+}
+
+function logout(){
+
+    localStorage.removeItem("role");
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userId");
+
+    window.location.href =
+    "role.html";
+}
+
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>

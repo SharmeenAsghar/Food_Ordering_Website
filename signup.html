@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Create Account</h2>
+
+    <form onsubmit="signup(); return false;">
+
+        <input
+            type="text"
+            id="fullname"
+            placeholder="Full Name"
+            required
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+        >
+
+        <input
+            type="text"
+            id="phone"
+            placeholder="Phone Number"
+            required
+        >
+
+        <button type="submit">
+            Signup
+        </button>
+
+    </form>
+
+</div>
+
+<script src="app.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

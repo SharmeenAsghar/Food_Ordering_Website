@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fastfest - Restaurants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">Fastfest</div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="restaurant.html">Restaurants</a>
+        <a href="menu.html">Food Items</a>
+        <a href="cart.html">Cart 🛒</a>
+    </nav>
+
+    <div class="auth-buttons">
+        <a href="login.html" class="btn outline">Login</a>
+        <a href="signup.html" class="btn solid">Signup</a>
+    </div>
+</header>
+
+<!-- HEADER -->
+<section class="page-header">
+    <h1>🍽️ Explore Restaurants</h1>
+    <p>Choose your favorite place to eat</p>
+</section>
+
+<!-- RESTAURANTS -->
+<section class="restaurant-grid">
+
+    <div class="card">
+        <h3>Desi Delight</h3>
+        <button onclick="openMenu('desi')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Spice Hub</h3>
+        <button onclick="openMenu('desi')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Burger Point</h3>
+        <button onclick="openMenu('fastfood')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Crunchy Bites</h3>
+        <button onclick="openMenu('fastfood')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Pizza Palace</h3>
+        <button onclick="openMenu('fastfood')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Sweet Heaven</h3>
+        <button onclick="openMenu('dessert')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Dessert Corner</h3>
+        <button onclick="openMenu('dessert')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Fresh Juice Bar</h3>
+        <button onclick="openMenu('juice')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Cool Sips</h3>
+        <button onclick="openMenu('juice')">View Menu</button>
+    </div>
+
+    <div class="card">
+        <h3>Asian Bowl</h3>
+        <button onclick="openMenu('asian')">View Menu</button>
+    </div>
+
+</section>
+
+<!-- FOOD MODAL -->
+<div class="modal" id="foodModal">
+    <div class="modal-content">
+        <h2>Food Menu</h2>
+        <div id="foodList"></div>
+        <br>
+        <button onclick="closeMenu()">Close</button>
+    </div>
+</div>
+<div class="add-item-form">
+
+    <h2>Add New Menu Item</h2>
+
+    <input type="text" id="newItemName" placeholder="Item Name">
+
+    <input type="number" id="newItemPrice" placeholder="Price">
+
+    <input type="text" id="newItemCategory" placeholder="Category">
+
+    <input type="text" id="newItemRestaurant" placeholder="Restaurant">
+
+    <input type="text" id="newItemImage" placeholder="Image Name">
+
+    <button onclick="addMenuItem()">Add Item</button>
+
+</div>
+<!-- SCRIPT -->
+<script>
+const menus = {
+    desi: [
+        {name: "Chicken Biryani", price: 350},
+        {name: "Chicken Karahi", price: 900},
+        {name: "Naan + Curry", price: 200}
+    ],
+    fastfood: [
+        {name: "Zinger Burger", price: 300},
+        {name: "Fries", price: 150},
+        {name: "Pizza Slice", price: 250}
+    ],
+    dessert: [
+        {name: "Chocolate Cake", price: 300},
+        {name: "Ice Cream", price: 200},
+        {name: "Brownie", price: 250}
+    ],
+    juice: [
+        {name: "Mango Juice", price: 180},
+        {name: "Orange Juice", price: 150},
+        {name: "Apple Juice", price: 200}
+    ],
+    asian: [
+        {name: "Chicken Noodles", price: 400},
+        {name: "Fried Rice", price: 350}
+    ]
+};
+
+function openMenu(type) {
+    const modal = document.getElementById("foodModal");
+    const list = document.getElementById("foodList");
+
+    list.innerHTML = "";
+
+    menus[type].forEach(item => {
+        list.innerHTML += `
+            <div class="food-item">
+                <span>${item.name} - Rs ${item.price}</span>
+                <button onclick="addToCart('${item.name}', ${item.price})">Add</button>
+            </div>
+        `;
+    });
+
+    modal.style.display = "flex";
+}
+
+function closeMenu() {
+    document.getElementById("foodModal").style.display = "none";
+}
+
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(name + " added to cart!");
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>
